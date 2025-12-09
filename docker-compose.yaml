@@ -24,10 +24,13 @@ services:
       - QUEUE_HEALTH_CHECK_ACTIVE=true
       - OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true
       - N8N_RUNNERS_ENABLED=true
-      - N8N_RUNNERS_MODE=external
-      - N8N_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0
-      - N8N_RUNNERS_BROKER_PORT=5679
-      - 'N8N_RUNNERS_AUTH_TOKEN=${N8N_RUNNERS_AUTH_TOKEN}'
+
+      # We REMOVE the broker/listener variables below because 
+      # the WORKER is now the one listening.
+      # - N8N_RUNNERS_MODE=external           <-- Removed
+      # - N8N_RUNNERS_BROKER_LISTEN_ADDRESS   <-- Removed
+      # - N8N_RUNNERS_BROKER_PORT             <-- Removed
+      # - N8N_RUNNERS_AUTH_TOKEN              <-- Removed
     volumes:
       - 'n8n-data:/home/node/.n8n'
     healthcheck:
