@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   n8n:
-    image: 'n8nio/n8n:stable'
+    image: 'n8nio/n8n:beta'
     restart: always
     environment:
       - 'N8N_EDITOR_BASE_URL=https://${SERVICE_FQDN_N8N}'
@@ -23,7 +23,8 @@ services:
       - 'QUEUE_BULL_REDIS_PASSWORD=${REDIS_PASSWORD}'
       - QUEUE_HEALTH_CHECK_ACTIVE=true
       - OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true
-      - N8N_RUNNERS_ENABLED=true
+      - N8N_RUNNERS_ENABLED=true      
+      - N8N_RUNNERS_MODE=external      
       - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
       - N8N_GIT_NODE_DISABLE_BARE_REPOS=true
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
